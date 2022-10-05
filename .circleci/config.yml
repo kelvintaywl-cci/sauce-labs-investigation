@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  test-connection:
+    docker:
+      - image:
+    resource_class: medium
+    steps:
+      - run:
+          name: Test connection
+          command: |
+            # see https://docs.saucelabs.com/secure-connections/sauce-connect/troubleshooting/#checking-network-connectivity-to-sauce-labs
+            curl -v https://saucelabs.com/
+      - run:
+          name: Install SauceLabs CLI
+          command: |
+            curl https://saucelabs.com/downloads/sc-4.6.2-linux.tar.gz -o saucelabs.tar.gz
+            tar -xzf saucelabs.tar.gz
+
+workflows:
+  main:
+    jobs:
+      - test-connection
