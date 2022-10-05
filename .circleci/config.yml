@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test-connection:
     docker:
-      - image:
+      - image: cimg/node:16.14.0
     resource_class: medium
     steps:
       - run:
